@@ -1,0 +1,178 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+
+#centerDiv {
+
+    padding:3px 5px 3px 5px;
+    text-align:left;
+    background-color:rgba(0, 0, 0, 0.5);
+    border:1px solid rgba(0,0,0,0.2);
+    width:50%;
+    height:50%;
+    /*visibility:hidden;*/
+    top:25%;
+    /*left:25%;*/
+    margin:0 auto;
+    position:relative;
+
+    color:#AAAAAA;
+    font-family: "Montserrat", 
+    sans-serif;
+    font-size:18px;
+    font-weight:normal;
+    line-height:18px;
+
+}
+
+#centerDiv h1 {
+    margin-left:10px;
+    margin-top:1em;
+    color:#fff;
+}
+#centerDiv div {
+    margin-left:10px;
+}
+
+.container {
+
+	width:100%; 
+	height:100%;
+	position:absolute; 
+	left:0; 
+	top:0; 
+	background:#; 
+	opacity:1;
+	/*cursor:pointer;*/
+	/* http://stackoverflow.com/a/15556319/4977165 */
+	pointer-events:none;
+
+}
+
+.visible {
+	visibility: visible;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.infoText {
+
+	/*padding:3px 5px 3px 5px;*/
+	text-align:center;
+	/*background-color:rgba(0, 0, 0, 0.5);*/
+	/*border:1px solid rgba(0,0,0,0.2);*/
+	width:100%;
+	/*height:100px;*/
+	/*visibility:hidden;*/
+	bottom:100px;
+	/*left:25%;*/
+	margin:0 auto;
+	position:absolute;
+
+	color:#fff;
+	font-family: "Montserrat", sans-serif;
+	font-size:18px;
+	font-weight:normal;
+	line-height:18px;
+
+    /*text-shadow: 1px 1px 2px rgba(100, 100, 100, 1);*/
+
+    text-shadow: 
+        -1px -1px 0px #000,
+         0px -1px 0px #000,
+         1px -1px 0px #000,
+        -1px  0px 0px #000,
+         1px  0px 0px #000,
+        -1px  1px 0px #000,
+         0px  1px 0px #000,
+         1px  1px 0px #000;
+
+	opacity: 0;
+}
+
+.highlight-inactivekey {
+    /*color: #FF0000;*/
+    color: #aaa;
+}
+.highlight-actionkey {
+    /*inactive*/
+    color: #00FF39;
+}
+.highlight-item {
+    color: #00DBFF;
+}
+.highlight-inactive {
+    color: #aaa;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes padding {
+    /*0%   { padding:3px 5px 1px 5px; }*/
+    /*50%  { padding:5px 10px 1px 10px; }*/
+    /*100% { padding:3px 5px 1px 5px; }*/
+    0% { opacity: 0; }
+   100% { opacity: 0.8; }
+}
+
+/* Standard syntax */
+@keyframes padding {
+    /*0%   { padding:3px 5px 1px 5px; }*/
+    /*50%  { padding:5px 10px 1px 10px; }*/
+    /*100% { padding:3px 5px 1px 5px; }*/
+    0% { opacity: 0; }
+    100% { opacity: 0.8; }
+   /*transition: opacity .25s ease-in-out;*/
+/*   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;*/
+
+}
+
+.animate {
+
+	/*http://www.w3schools.com/css/css3_animations.asp*/
+   	/*opacity: 0;*/
+
+    -webkit-animation-name: padding; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.8s; /* Chrome, Safari, Opera */
+    animation-name: padding;
+    animation-duration: 0.8s;
+
+	animation-fill-mode: forwards;  
+    /*animation-iteration-count: infinite;*/
+    /*animation-iteration-count: 2;*/
+	
+}
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fadeout {
+    /*0%   { padding:3px 5px 1px 5px; }*/
+    /*50%  { padding:5px 10px 1px 10px; }*/
+    /*100% { padding:3px 5px 1px 5px; }*/
+    0% { opacity: 0.8; }
+   100% { opacity: 0; }
+}
+
+/* Standard syntax */
+@keyframes fadeout {
+    /*0%   { padding:3px 5px 1px 5px; }*/
+    /*50%  { padding:5px 10px 1px 10px; }*/
+    /*100% { padding:3px 5px 1px 5px; }*/
+    0% { opacity: 0.8; }
+    100% { opacity: 0; }
+   /*transition: opacity .25s ease-in-out;*/
+/*   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;*/
+
+}
+
+.fadeOut {
+
+    -webkit-animation-name: fadeout; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1.5s; /* Chrome, Safari, Opera */
+    animation-name: fadeout;
+    animation-duration: 1.5s;
+
+    animation-fill-mode: forwards; 
+	/*animation-direction: reverse;*/
+}
