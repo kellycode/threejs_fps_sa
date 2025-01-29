@@ -20,7 +20,7 @@ class PreloadManager {
 
     M_PRELOADS = [
         "assets/models/ithaca/m37_tris.obj",
-        "assets/models/mk14/mk14_2.obj",
+        "assets/models/mk14/MK14.obj",
         "assets/models/g36c/g36c_arby26.obj",
     ];
 

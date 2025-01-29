@@ -16,7 +16,7 @@ class WeaponLoader {
         this.t_sniper = this.preloadedTextures["assets/models/mk14/MK14.jpg"];
         this.t_sniper_n = this.preloadedTextures["assets/models/mk14/MK14_normalprot.jpg"];
         this.t_sniper_s = this.preloadedTextures["assets/models/mk14/MK14_specular.jpg"];
-        this.m_sniperMesh = this.preloadedModels["assets/models/mk14/mk14_2.obj"];
+        this.m_sniperMesh = this.preloadedModels["assets/models/mk14/MK14.obj"];
 
         this.t_rifle = this.preloadedTextures["assets/models/g36c/mat/g36c_d_fin.jpg"];
         this.t_rifle_n = this.preloadedTextures["assets/models/g36c/mat/g36c_n_fin.jpg"];
