@@ -6,7 +6,13 @@ body {
 	height: 100%;
 }
 
-#blocker {
+#Scene_Container {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#Blocker_Div {
 
 	position: absolute;
 
@@ -17,32 +23,12 @@ body {
 
 }
 
-#instructions {
-
+#Instructions_Div {
 	width: 100%;
 	height: 100%;
-
 	font-family: "Tahoma";
-
-	display: -webkit-box;
-	display: -moz-box;
-	display: box;
-
-	-webkit-box-orient: horizontal;
-	-moz-box-orient: horizontal;
-	box-orient: horizontal;
-
-	-webkit-box-pack: center;
-	-moz-box-pack: center;
-	box-pack: center;
-
-	-webkit-box-align: center;
-	-moz-box-align: center;
-	box-align: center;
-
+	display: block;
 	color: #ffffff;
 	text-align: center;
-
 	cursor: pointer;
-
 }

@@ -1,25 +1,104 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<title>Playground</title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/hud.css">
-    <link rel="stylesheet" type="text/css" href="css/loadingScreen.css">
+<!DOCTYPE html>
+<html lang="en" oncontextmenu="return false;">
+    <head>
+        <title>Playground</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/hud.css" />
+        <link rel="stylesheet" type="text/css" href="css/loadingScreen.css" />
 
-    <meta name="og:type" content="website" />
-	<meta name="og:image" content="http://weiserhei.github.io/threejs-experiments/goblintest/ogimage.jpg"/>
-	<meta name="og:title" content="Physic playground" />
-	<meta name="og:description" content="Three.js + Goblin.js testbed" />
-	<meta name="og:url" content="http://weiserhei.github.io/threejs-experiments/goblintest/"/>
+        <meta name="og:type" content="website" />
+        <meta name="og:image" content="http://weiserhei.github.io/threejs-experiments/goblintest/ogimage.jpg" />
+        <meta name="og:title" content="Physic playground" />
+        <meta name="og:description" content="Three.js + Goblin.js testbed" />
+        <meta name="og:url" content="http://weiserhei.github.io/threejs-experiments/goblintest/" />
 
-	<script data-main="js/main" src="js/libs/require.js"></script>
+        <!-- LIBS-->
+        <script src="jsnew/libs/three/three.js"></script>
+        <script src="jsnew/libs/stats.min.js"></script>
+        <script src="jsnew/libs/goblin.js"></script>
+        <script src="jsnew/libs/SPE.js"></script>
+        <script src="jsnew/libs/tween.min.js"></script>
+        <script src="jsnew/libs/state-machine.min.js"></script>
+        <script src="jsnew/libs/three/loaders/OBJLoader.js"></script>
+        <script src="jsnew/libs/three/Detector.js"></script>
 
-</head>
-<body oncontextmenu="return false;">
+        <!-- APP CLASSES -->
+        <script src="jsnew/app/classes/MuzzleParticles.js"></script>
+        <script src="jsnew/app/classes/PuffParticles.js"></script>
+        <script src="jsnew/app/classes/Skycube.js"></script>
+        <script src="jsnew/app/classes/PhysicFactory.js"></script>
+        <script src="jsnew/app/classes/PreloadManager.js"></script>
+        <script src="jsnew/app/classes/WeaponLoader.js"></script>
+        <script src="jsnew/app/classes/SoundLoader.js"></script>
+        <script src="jsnew/app/classes/Weapon.js"></script>
+        <script src="jsnew/app/classes/PlayerBase.js"></script>
+        <script src="jsnew/app/classes/Player.js"></script>
+        <script src="jsnew/app/classes/HUD.js"></script>
+        <script src="jsnew/app/classes/Crosshair.js"></script>
+        <script src="jsnew/app/classes/FPSMover.js"></script>
+        <script src="jsnew/app/classes/PointerLock.js"></script>
+        <script src="jsnew/app/classes/WeaponStateMachine.js"></script>
+    </head>
+    <body>
+        <div id="Loading_Container"></div>
 
-	<div id="loading-container"></div>
+        <!-- SCENE BUILDER -->
+        <script src="jsnew/app/classes/SceneElements.js"></script>
+        <!-- SCENE STARTER -->
+        <script src="jsnew/app/classes/App.js"></script>
 
-</body>
+        <!-- <script src="jsnew/app/app.js"></script> -->
+
+        <script>
+            // not really needed these days
+            if (!Detector.webgl) {
+                Detector.addGetWebGLMessage();
+            } else {
+                // available but not used atm
+                g_loadingManager.onProgress = function (item, loaded, total) {};
+                g_loadingManager.onLoad = function (a, b, c) {};
+            }
+
+            // START PRELOADING MODELS AND TEXTURES
+            let soundsLoaded = false;
+            let modelsLoaded = false;
+            let g_weapons = {};
+            let m_preloaded = {};
+            let g_allSounds = {};
+            let g_App;
+
+            let preloadCallback = function (preloaded, type) {
+                if (type === "models") {
+                    m_preloaded = preloaded;
+                    modelsLoaded = true;
+                } else if (type === "sounds") {
+                    g_allSounds = preloaded;
+                    soundsLoaded = true;
+                }
+
+                if (soundsLoaded && modelsLoaded) {
+                    let g_sounds = g_allSounds.sounds;
+                    let weaponLoader = new WeaponLoader(m_preloaded, g_sounds);
+                    let weaponsLoaded = weaponLoader.loadWeapons();
+                    let weaponsAvailable = weaponLoader.initWeapons(weaponsLoaded);
+
+                    g_weapons = weaponsAvailable;
+
+                    g_App = new App();
+                    g_App.initialize();
+                    //g_app.initialize();
+                }
+            };
+
+            let preloadManager = new PreloadManager(preloadCallback);
+            preloadManager.preloadModels();
+            preloadManager.preloadTextures();
+
+            let soundPreLoader = new SoundLoaderClass(g_listener, g_loadingManager, preloadCallback);
+            soundPreLoader.loadSounds();
+            // END PRELOADING MODELS AND TEXTURES
+        </script>
+    </body>
 </html>
