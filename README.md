@@ -1,11 +1,8 @@
 # threejs-fps
 
-KellyCode Jan 22, 2025  
-I'm removing until I have the basics and then upgrading and rebuilding  
-Stepped through and removed the require dependency so it's all vanilla js.  
-Renoving anything that's not about the player moving and shooting  
-Put in a temp fix for collision detection for player movement  
-Weeeeeee!  Randomly placed and called globals EVERYWHERE!!!!
+KellyCode Jan 29, 2025  
+Removed the require dependency, made eveything vanilla js and class  
+Original fork: https://github.com/kellycode/threejs_fps_fork  
 
 ---
 
